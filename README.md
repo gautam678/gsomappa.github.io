@@ -1,2 +1,0 @@
-# Gautam's portfolio page
-
