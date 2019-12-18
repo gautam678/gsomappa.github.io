@@ -29,6 +29,7 @@
     "typeface-nunito": "0.0.72"
   },
   "devDependencies": {
+    "gh-pages": "^2.1.1",
     "prettier": "^1.17.1"
   },
   "keywords": [
@@ -38,6 +39,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "gatsby build && gh-pages -d public --branch master",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
