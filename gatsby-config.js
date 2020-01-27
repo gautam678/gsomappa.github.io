@@ -1,9 +1,13 @@
+require("dotenv").config()
+
+const config = require("./config/github-config.js")
+
 module.exports = {
   siteMetadata: {
     title: `Gautam Somappa`,
     subtitle: `Software Developer`,
-    description: `A minimal blog starter built with Gatsbyjs. The needed Gatsby files are included.`,
-    author: ``,
+    description: `My personal website where I host my blogs and projects`,
+    author: `Gautam Somappa`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -22,6 +26,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
     {
@@ -63,6 +68,15 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        // token: required by the GitHub API
+        token: config.githubApiToken,
+        graphQLQuery: config.githubApiQuery,
+        variables: config.githubApiVariables,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

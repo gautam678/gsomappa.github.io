@@ -6,11 +6,7 @@ import styled from "@emotion/styled"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Content = styled.div`
-  margin: 0 auto;
-  max-width: 860px;
-  padding: 1.45rem 1.0875rem;
-`
+const Content = styled.div``
 
 const ArticleDate = styled.h5`
   display: inline;
@@ -33,36 +29,16 @@ const ReadingTime = styled.h5`
   color: #606060;
 `
 
-const IndexPage = ({ data }) => {
+const Blog = ({ data }) => {
   return (
     <Layout>
       <SEO title="Blog" />
-      <Content>
-        <h1>Blog</h1>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link
-              to={node.frontmatter.path}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-              <MarkerHeader>{node.frontmatter.title} </MarkerHeader>
-              <div>
-                <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
-              </div>
-              <p>{node.excerpt}</p>
-            </Link>
-          </div>
-        ))}
-      </Content>
+      <Content></Content>
     </Layout>
   )
 }
 
-export default IndexPage
+export default Blog
 
 export const query = graphql`
   query {

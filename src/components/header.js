@@ -1,97 +1,43 @@
-import { Link } from "gatsby"
-import styled from "@emotion/styled"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
-import React from "react"
+import { useColorMode } from "theme-ui"
+import ColorModeToggle from "./colorModeToggle"
+import NavLink from "./navLink"
 
-const Content = styled.div`
-  max-width: 860px;
-  padding: 1rem 1.0875rem;
-  font-size: 1.2rem;
-`
-
-const NavLink = styled(Link)`
-  color: black;
-  margin-left: 15px;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-
-  ::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+const Header = () => {
+  const [colorMode, setColorMode] = useColorMode()
+  const isDark = colorMode === `dark`
+  const toggleColorMode = e => {
+    e.preventDefault()
+    setColorMode(isDark ? `light` : `dark`)
   }
 
-  :hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-`
-
-const GitHubLink = styled.a`
-  color: black;
-  margin-left: 15px;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-
-  ::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
-  }
-
-  :hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-`
-
-const HomeLink = styled(NavLink)`
-  margin-left: 0;
-`
-
-const SiteHeader = styled.header`
-  background: transparent;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-`
-
-const Header = ({ siteTitle }) => (
-  <SiteHeader>
-    <Content>
-      <p>
-        <HomeLink to="/">{siteTitle}</HomeLink>
-        <NavLink to="/blog">Blog</NavLink>
-        <GitHubLink href="https://github.com/niklasmtj/gatsby-starter-julia">
-          GitHub
-        </GitHubLink>
-      </p>
-    </Content>
-  </SiteHeader>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+  return (
+    <div
+      sx={{
+        margin: "0px",
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "1rem 1.0875rem",
+        fontSize: "1.2rem",
+        variant: `dividers.bottom`,
+        alignItems: `center`,
+        justifyContent: `space-between`,
+        mt: 3,
+        color: `secondary`,
+        a: { color: `secondary`, ":hover": { color: `toggleIcon` } },
+        flexFlow: `wrap`,
+      }}
+    >
+      <div>
+        <NavLink homeLink to="/" darkmode={isDark ? 1 : 0} text="Home" />
+        <NavLink darkmode={isDark ? 1 : 0} to="/blog" text="Blog" />
+        <NavLink darkmode={isDark ? 1 : 0} to="/github" text="Github" />
+      </div>
+      <ColorModeToggle darkmode={isDark ? 1 : 0} toggle={toggleColorMode} />
+    </div>
+  )
 }
 
 export default Header

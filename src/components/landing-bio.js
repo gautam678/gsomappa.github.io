@@ -10,9 +10,9 @@ const Container = styled.div`
 const OuterContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
-  height: 78vh;
+  height: 30vh;
 `
 
 const Description = styled.p`
@@ -22,11 +22,19 @@ const Description = styled.p`
 `
 
 const NameHeader = styled.h1`
-  font-size: 3.5rem;
+  font-size: 1.5rem;
   margin-bottom: 0;
 `
 
-const LandingBio = () => (
+const ImageDisplay = styled.img`
+  border-radius: 100%;
+  max-width: 250px;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+`
+
+const LandingBio = ({ imageSrc }) => (
   <StaticQuery
     query={graphql`
       query LandingSiteTitleQuery {
@@ -41,7 +49,9 @@ const LandingBio = () => (
     render={data => (
       <OuterContainer>
         <Container>
+          {/* <ImageDisplay src={imageSrc} /> */}
           <NameHeader>{data.site.siteMetadata.title}</NameHeader>
+
           <Description>{data.site.siteMetadata.subtitle}</Description>
         </Container>
       </OuterContainer>
