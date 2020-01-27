@@ -1,1 +1,0 @@
-# gsomappa.github.io
