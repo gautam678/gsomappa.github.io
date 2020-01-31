@@ -4,7 +4,7 @@ const config = require("./config/github-config.js")
 
 module.exports = {
   siteMetadata: {
-    title: `Gautam Somappa`,
+    title: `GAUTAM\nSOMAPPA`,
     subtitle: `Software Developer`,
     description: `My personal website where I host my blogs and projects`,
     author: `Gautam Somappa`,
@@ -78,7 +78,7 @@ module.exports = {
         graphQLQuery: config.githubApiQuery,
         variables: config.githubApiVariables,
       },
-    },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',

@@ -29,21 +29,21 @@ const Layout = ({ children }) => {
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
             margin: "0",
-            minHeight: "100vh",
-            backgroundColor: `primary`,
           }}
         >
           <div sx={{ gridArea: "1 / 2 / -1 / 6", fontFamily: `body` }}>
             <Header />
             <div
               sx={{
+                display: "flex",
+                minHeight: "79vh",
                 margin: "0px",
                 maxWidth: "860px",
-                paddingTop: "0px",
                 padding: "1.45rem 1.0875rem",
+                paddingTop: "0px",
               }}
             >
-              <main>{children}</main>
+              <main css={{ flex: "1 0 auto" }}>{children}</main>
             </div>
             <footer
               sx={{
@@ -51,6 +51,7 @@ const Layout = ({ children }) => {
                 color: `footer`,
                 paddingBottom: "10px",
                 left: "0%",
+                flexShrink: "0",
                 justifyContent: "center",
                 width: "100%",
               }}

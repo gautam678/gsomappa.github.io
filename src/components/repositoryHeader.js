@@ -21,6 +21,7 @@ const RepositoryHeader = ({ repo }) => {
         <a
           href={`https://github.com${repo.resourcePath}`}
           target="_blank"
+          sx={{ color: `link` }}
           rel="noopener noreferrer"
         >
           {repo.name}

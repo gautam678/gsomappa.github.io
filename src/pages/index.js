@@ -5,15 +5,14 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const IndexPage = ({ data }) => {
-  console.log(data)
-  const { src } = data.file.childImageSharp.original
+  const { fluid } = data.file.childImageSharp
   return (
     <Layout>
       <SEO
         title="Home"
         keywords={[`Gautam Somappa`, `Gatsby`, `react`, `Home`]}
       />
-      <LandingBio imageSrc={src} />
+      <LandingBio fluid={fluid} />
     </Layout>
   )
 }
@@ -24,8 +23,8 @@ export const fileSystemQuery = graphql`
   query {
     file(relativePath: { eq: "gautam-dp.jpg" }) {
       childImageSharp {
-        original {
-          src
+        fluid(maxWidth: 300, maxHeight: 300, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
