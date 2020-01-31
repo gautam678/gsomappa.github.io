@@ -38,6 +38,7 @@ const NameHeader = styled.h1`
   vertical-align: middle;
   font-size: 1.5rem;
   margin-bottom: 0;
+  text-transform: uppercase;
   white-space: pre-wrap;
 `
 

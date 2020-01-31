@@ -8,7 +8,10 @@ const Github = ({ data }) => {
   const { repositories } = data.githubData.data.viewer
   return (
     <Layout>
-      <SEO title={[`Gautam Somappa`, `website`, `react`, `Github`]} />
+      <SEO
+        title="Github"
+        keywords={[`Gautam Somappa`, `gatsby`, `react`, `github`]}
+      />
 
       {repositories.nodes
         .map(repo => <Repository key={repo.name} repo={repo} />)

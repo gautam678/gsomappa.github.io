@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO
         title="Home"
-        keywords={[`Gautam Somappa`, `Gatsby`, `react`, `Home`]}
+        keywords={[`Gautam Somappa`, `gatsby`, `react`, `home`]}
       />
       <LandingBio fluid={fluid} />
     </Layout>
