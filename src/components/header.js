@@ -32,7 +32,7 @@ const Header = () => {
     >
       <div>
         <NavLink homeLink to="/" darkmode={isDark ? 1 : 0} text="Home" />
-        <NavLink darkmode={isDark ? 1 : 0} to="/blog" text="Blog" />
+        {/* <NavLink darkmode={isDark ? 1 : 0} to="/blog" text="Blog" /> */}
         <NavLink darkmode={isDark ? 1 : 0} to="/github" text="Github" />
       </div>
       <ColorModeToggle darkmode={isDark ? 1 : 0} toggle={toggleColorMode} />
