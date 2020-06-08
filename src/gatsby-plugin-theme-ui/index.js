@@ -50,8 +50,8 @@ export default {
     toggleIcon: tailwind.colors.gray[8],
     footer: tailwind.colors.black,
     divide: tailwind.colors.gray[4],
-    link: tailwind.colors.pink[7],
-    altLink: tailwind.colors.pink[2],
+    link: tailwind.colors.pink[6],
+    altLink: tailwind.colors.pink[6],
     modes: {
       dark: {
         primary: `#1A1F2C`,
@@ -62,8 +62,8 @@ export default {
         background: `#1A202C`,
         footer: tailwind.colors.white,
         divide: tailwind.colors.gray[8],
-        link: tailwind.colors.pink[2],
-        altLink: tailwind.colors.pink[7],
+        link: tailwind.colors.pink[6],
+        altLink: tailwind.colors.pink[6],
       },
     },
   },
