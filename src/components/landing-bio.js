@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
 import { jsx } from "theme-ui"
 import Img from "gatsby-image"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCoffee } from "@fortawesome/free-solid-svg-icons"
 const OuterContainer = styled.div`
   display: flex;
   align-items: center;
@@ -42,62 +43,93 @@ const NameHeader = styled.h1`
   white-space: pre-wrap;
 `
 
-const LandingBio = ({ fluid }) => (
-  <StaticQuery
-    query={graphql`
-      query LandingSiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            subtitle
-          }
+const IconList = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 1rem;
+`
+
+const IconStyle = styled(FontAwesomeIcon)`
+  font-size: 1.5rem;
+  margin-top: 0.7rem;
+  padding-left: 5%;
+  color: headerText;
+`
+
+const LandingBio = ({ fluid }) => {
+  const data = useStaticQuery(graphql`
+    query LandingSiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+          subtitle
         }
       }
-    `}
-    render={data => (
-      <OuterContainer>
-        <Container>
-          <Img
+    }
+  `)
+
+  return (
+    <OuterContainer>
+      <Container>
+        <Img
+          sx={{
+            border: "5px solid",
+            borderColor: `headerText`,
+            borderRadius: "100%",
+            width: "225px",
+            height: "225px",
+            transition: "0.3s",
+            "&:hover": {
+              borderColor: `profileBorder`,
+            },
+          }}
+          fluid={fluid}
+        />
+        <div sx={{ variant: `dividers.bottom` }}>
+          <NameHeader sx={{ color: `headerText` }}>
+            {data.site.siteMetadata.title}
+          </NameHeader>
+        </div>
+        <Description sx={{ color: `headerText` }}>
+          {data.site.siteMetadata.subtitle}
+        </Description>
+      </Container>
+      <RightContainer>
+        <h1 sx={{ textAlign: "left", color: `headerText` }}>
+          Hi there! I am a software developer at{" "}
+          <a
             sx={{
-              border: "5px solid",
-              borderColor: `text`,
-              borderRadius: "100%",
-              width: "225px",
-              height: "225px",
-              transition: "0.3s",
-              "&:hover": {
-                borderColor: `profileBorder`,
-              },
+              textDecoration: "none",
+              color: `link`,
+              "&:hover": { color: `altLink` },
             }}
-            fluid={fluid}
-          />
-          <div sx={{ variant: `dividers.bottom` }}>
-            <NameHeader>{data.site.siteMetadata.title}</NameHeader>
-          </div>
-          <Description>{data.site.siteMetadata.subtitle}</Description>
-        </Container>
-        <RightContainer>
-          <h1 sx={{ textAlign: "left" }}>
-            Hi there! I am a software developer working for{" "}
-            <a
-              sx={{
-                textDecoration: "none",
-                color: `link`,
-                "&:hover": { color: `altLink` },
-              }}
-              href="https://www.walmartlabs.com/"
-              target="_blank"
-            >
-              Walmart Labs
-            </a>
-            . I'm passionate about all things programming.
-          </h1>
-          <div sx={{ variant: `dividers.bottom`, paddingBottom: "17%" }}></div>
-        </RightContainer>
-      </OuterContainer>
-    )}
-  />
-)
+            href="https://www.walmartlabs.com/"
+            target="_blank"
+          >
+            Walmart Labs
+          </a>
+          . I'm passionate about building modern and highly scalable
+          applications.
+        </h1>
+        <div
+          sx={{
+            variant: `dividers.bottom`,
+            paddingBottom: "25%",
+          }}
+        ></div>
+        <IconList>
+          <IconStyle icon={faCoffee} />
+          <IconStyle icon={faCoffee} />
+          <IconStyle icon={faCoffee} />
+          <IconStyle icon={faCoffee} />
+          <IconStyle icon={faCoffee} />
+          <IconStyle icon={faCoffee} />
+        </IconList>
+      </RightContainer>
+    </OuterContainer>
+  )
+}
 
 NameHeader.propTypes = {
   siteTitle: PropTypes.string,

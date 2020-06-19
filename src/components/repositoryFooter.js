@@ -18,7 +18,7 @@ const RepositoryFooter = ({ repo }) => {
     )
   }
   return (
-    <div style={{ color: `#586069`, fontSize: 12, paddingTop: 5 }}>
+    <div style={{ color: `text`, fontSize: 12, paddingTop: 5 }}>
       <FooterItem>
         <span
           style={{

@@ -1,8 +1,8 @@
 import React from "react"
 
-import RepositoryFooter from "./repositoryFooter"
-import RepositoryHeader from "./repositoryHeader"
-import RepositoryDescription from "./repositoryDescription"
+import RepositoryFooter from "../components/repositoryFooter"
+import RepositoryHeader from "../components/repositoryHeader"
+import RepositoryDescription from "../components/repositoryDescription"
 
 import { jsx } from "theme-ui"
 const Repository = ({ repo }) => {
